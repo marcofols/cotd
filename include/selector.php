@@ -70,7 +70,7 @@ if ( !empty($service) ) {
 } elseif ( file_exists('data/'.$_SESSION['SELECTOR'].'.php') ) {
     include('data/'.$_SESSION['SELECTOR'].'.php');
 } elseif ( strtolower(file_exists('data/'.$_SESSION['SELECTOR'].'.php')) ) {
-    include(strtolower('data/'.$_SESSION['SELECTOR'].'.php'));
+    include(strtolower('data/'.$_SESSION['SELECTOR'].'.php')); 
 } else {
     // Unsupported theme so default to pets
     $_SESSION['SELECTOR'] = strtoupper('pets');
