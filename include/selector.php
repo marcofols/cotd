@@ -39,19 +39,19 @@ if ( empty($dbhost) ) {
     $_SESSION['DB'] = 'true';
 }
 
-$selector = getenv('SELECTOR');
+$selector = strtoupper(getenv('SELECTOR'));
 // if theme not set by client then determine active theme default to pets
 if ( empty($_SESSION['SELECTOR']) ) { 
 
     if ( !empty($selector) ) {
-        $_SESSION['SELECTOR'] = getenv('SELECTOR');
+        $_SESSION['SELECTOR'] = strtoupper(getenv('SELECTOR'));
     } elseif ( file_exists($ini_file) ) {
         $ini_array = parse_ini_file($ini_file);     
-        $_SESSION['SELECTOR'] = $ini_array['selector'];
+        $_SESSION['SELECTOR'] = strtoupper($ini_array['selector']);
     } elseif ( $_SESSION['V2'] == 'true' )  {
-        $_SESSION['SELECTOR'] = 'pets';
+        $_SESSION['SELECTOR'] = strtoupper('pets');
     } else {
-        $_SESSION['SELECTOR'] = 'pets';
+        $_SESSION['SELECTOR'] = strtoupper('pets');
     }
 
 }                                     
@@ -69,9 +69,11 @@ if ( !empty($service) ) {
     include('data/db.php');
 } elseif ( file_exists('data/'.$_SESSION['SELECTOR'].'.php') ) {
     include('data/'.$_SESSION['SELECTOR'].'.php');
+} elseif ( strtolower(file_exists('data/'.$_SESSION['SELECTOR'].'.php')) ) {
+    include(strtolower('data/'.$_SESSION['SELECTOR'].'.php'));
 } else {
     // Unsupported theme so default to pets
-    $_SESSION['SELECTOR'] = 'pets';
+    $_SESSION['SELECTOR'] = strtoupper('pets');
     include('data/pets.php');
 }
 
