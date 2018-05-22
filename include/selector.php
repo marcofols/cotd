@@ -39,19 +39,19 @@ if ( empty($dbhost) ) {
     $_SESSION['DB'] = 'true';
 }
 
-$selector = strtoupper(getenv('SELECTOR'));
+$selector = strtolower(getenv('SELECTOR'));
 // if theme not set by client then determine active theme default to pets
 if ( empty($_SESSION['SELECTOR']) ) { 
 
     if ( !empty($selector) ) {
-        $_SESSION['SELECTOR'] = strtoupper(getenv('SELECTOR'));
+        $_SESSION['SELECTOR'] = strtolower(getenv('SELECTOR'));
     } elseif ( file_exists($ini_file) ) {
         $ini_array = parse_ini_file($ini_file);     
-        $_SESSION['SELECTOR'] = strtoupper($ini_array['selector']);
+        $_SESSION['SELECTOR'] = strtolower($ini_array['selector']);
     } elseif ( $_SESSION['V2'] == 'true' )  {
-        $_SESSION['SELECTOR'] = strtoupper('pets');
+        $_SESSION['SELECTOR'] = strtolower('pets');
     } else {
-        $_SESSION['SELECTOR'] = strtoupper('pets');
+        $_SESSION['SELECTOR'] = strtolower('pets');
     }
 
 }                                     
