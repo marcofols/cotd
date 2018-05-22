@@ -73,7 +73,7 @@ if ( !empty($service) ) {
     include(strtolower('data/'.$_SESSION['SELECTOR'].'.php')); 
 } else {
     // Unsupported theme so default to pets
-    $_SESSION['SELECTOR'] = strtoupper('pets');
+    $_SESSION['SELECTOR'] = strtolower('pets');
     include('data/pets.php');
 }
 
