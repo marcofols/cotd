@@ -39,7 +39,8 @@ if ( empty($dbhost) ) {
     $_SESSION['DB'] = 'true';
 }
 
-$selector = strtolower(getenv('SELECTOR'));
+$selector = (getenv('selector') ?: getenv('SELECTOR'));
+$selector = strtolower($selector);
 // if theme not set by client then determine active theme default to pets
 if ( empty($_SESSION['SELECTOR']) ) { 
 
