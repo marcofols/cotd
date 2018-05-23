@@ -39,13 +39,15 @@ if ( empty($dbhost) ) {
     $_SESSION['DB'] = 'true';
 }
 
-$selector = (getenv('selector') ?: getenv('SELECTOR'));
+$selector = getenv('selector');
+if ( empty($selector) ) { $selector = getenv('SELECTOR') };
 $selector = strtolower($selector);
+
 // if theme not set by client then determine active theme default to pets
 if ( empty($_SESSION['SELECTOR']) ) { 
 
     if ( !empty($selector) ) {
-        $_SESSION['SELECTOR'] = strtolower(getenv('SELECTOR'));
+        $_SESSION['SELECTOR'] = $selector;
     } elseif ( file_exists($ini_file) ) {
         $ini_array = parse_ini_file($ini_file);     
         $_SESSION['SELECTOR'] = strtolower($ini_array['selector']);
