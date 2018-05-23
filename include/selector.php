@@ -42,7 +42,7 @@ if ( empty($dbhost) ) {
 // $selector = getenv('selector');
 // if ( empty($selector) ) { $selector = getenv('SELECTOR') };
 $selector = $_ENV['selector'];
-if ( empty($selector) ) { $selector = $_ENV['SELECTOR'] };
+if ( empty($selector) ) { $selector = $_ENV['SELECTOR']; }
 $selector = strtolower($selector);
 
 // if theme not set by client then determine active theme default to pets
