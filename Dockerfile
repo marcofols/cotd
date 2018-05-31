@@ -11,5 +11,9 @@ RUN apt-get update \
     "deb [arch=amd64] https://download.docker.com/linux/debian \
     $(lsb_release -cs) \
     stable" \
-    && apt-get install docker-ce
+    && apt-get install -y \
+    docker-ce 
+    kubectl
+    hostname
 COPY . /var/www/html/
+insta
