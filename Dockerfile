@@ -1,6 +1,6 @@
 FROM php:7.0-apache
-RUN apt-get update \
-    && apt-get install -y \
+RUN yum update \
+    && yum install -y \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -11,9 +11,8 @@ RUN apt-get update \
     "deb [arch=amd64] https://download.docker.com/linux/debian \
     $(lsb_release -cs) \
     stable" \
-    && apt-get install -y \
+    && yum install -y \
     docker-ce 
     kubectl
     hostname
 COPY . /var/www/html/
-insta
